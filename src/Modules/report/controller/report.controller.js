@@ -1,7 +1,7 @@
-import productModel from "../../../../DB/model/Product.model.js";
+import productModel from "../../../../DB/model/product.model.js";
 import { productReportModel } from "../../../../DB/model/productReport.model.js";
 import { reportModel } from "../../../../DB/model/report.model.js";
-import userModel from "../../../../DB/model/user.model.js";
+import userModel from "../../../../DB/model/User.model.js";
 
 export const createReportStockholder = async(req,res,next)=>{
     const {stockholderId}=req.params;
