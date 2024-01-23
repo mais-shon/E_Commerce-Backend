@@ -1,0 +1,62 @@
+import mongoose,{Types,model,Schema} from 'mongoose';
+const productSchema=new Schema({
+    name:{
+        type:String,
+        required:true,
+    },
+    price:{
+        type:Number,
+        required:true,
+        default:1
+    },
+    descreption:{
+        type:String,
+    },
+    slug:{
+        type:String
+    },
+    discount:{
+        type:Number,
+        default:0,
+    },
+    finalPrice:{
+        type:Number,
+        required:true,
+    },
+    createdBy:{
+        type:Types.ObjectId,
+        ref:'User',
+        required:true
+    },
+    mainImage:{
+        type:Object,
+        required:true
+    },
+    subImages:[{
+        type:Object,
+    }],
+    updatedBy:{
+    type:Types.ObjectId,
+    ref:'User',
+    
+    },
+    deletedBy:{
+        type:Types.ObjectId,
+        ref:'User',
+    },
+    deletedAt:{
+        type:Boolean,
+        default:false,
+    },
+    like:[{type:Types.ObjectId,ref:'User'}],
+    unlike:[{type:Types.ObjectId,ref:'User'}],
+    totalVote:{
+        type:Number,
+        default:0
+    }
+},
+{
+    timestamps:true,
+});
+const productModel = mongoose.models.Product ||  model('Product', productSchema);
+export default productModel;

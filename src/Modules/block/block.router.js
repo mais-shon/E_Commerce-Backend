@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { auth, roles } from "../../Middleware/auth.middleware.js";
+import { asyncHandler } from "../../Services/errorHandling.js";
+import * as blockController from './controller/block.controller.js';
+import validation from '../../Middleware/validation.js';
+import * as validators from './block.validation.js';
+const router=Router();
+router.post('/:customerId',validation(validators.createBlockSchema),auth([roles.stakeHolder]),asyncHandler(blockController.createBlock));
+router.delete('/:customerId',validation(validators.deleteBlockSchema),auth([roles.stakeHolder]),asyncHandler(blockController.deleteBlock));
+export default router;
