@@ -1,4 +1,4 @@
-import userModel from "../../../../DB/model/user.model.js";
+import userModel from "../../../../DB/model/User.model.js";
 import { generateToken, verifyToken } from "../../../Services/generateAndVerifyToken.js";
 import { compare, hash } from "../../../Services/hashAndCompare.js";
 import { sendEmail } from "../../../Services/sendEmail.js";
