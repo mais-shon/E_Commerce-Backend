@@ -1,7 +1,7 @@
 import slugify from "slugify";
 import cloudinary from "../../../Services/cloudinary.js";
-import userModel from "../../../../DB/model/user.model.js";
-import productModel from "../../../../DB/model/Product.model.js";
+import userModel from "../../../../DB/model/User.model.js";
+import productModel from "../../../../DB/model/product.model.js";
 import Product_Color_SizeModel from "../../../../DB/model/Product_Color_Size.model.js";
 import { blockModel } from "../../../../DB/model/block.model.js";
 //create product
