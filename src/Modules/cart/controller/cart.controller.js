@@ -2,7 +2,7 @@ import productModel from "../../../../DB/model/Product.model.js";
 import Product_Color_SizeModel from "../../../../DB/model/Product_Color_Size.model.js";
 import { blockModel } from "../../../../DB/model/block.model.js";
 import cartModel from "../../../../DB/model/cart.model.js";
-import userModel from "../../../../DB/model/user.model.js";
+import userModel from "../../../../DB/model/User.model.js";
 
 export const addToCart = async (req, res, next) => {
     const {  qty, color, size } = req.body;
