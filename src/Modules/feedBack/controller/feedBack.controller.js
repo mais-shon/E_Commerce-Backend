@@ -1,4 +1,4 @@
-import productModel from "../../../../DB/model/Product.model.js";
+import productModel from "../../../../DB/model/product.model.js";
 import feedBackModel from "../../../../DB/model/feedBack.model.js";
 import orderModel from "../../../../DB/model/order.model.js";
 
