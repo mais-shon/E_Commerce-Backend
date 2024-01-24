@@ -1,4 +1,4 @@
-import userModel from "../../../../DB/model/user.model.js";
+import userModel from "../../../../DB/model/User.model.js";
 import { generateToken, verifyToken } from "../../../Services/generateAndVerifyToken.js";
 import { compare, hash } from "../../../Services/hashAndCompare.js";
 import { sendEmail } from "../../../Services/sendEmail.js";
@@ -42,7 +42,7 @@ export const signUp = async (req, res, next) => {
     const createUSers = await userModel.create({ firstName, lastName, address, phone, email, password: hashPassword, role });
     return res.status(201).json({ message: "success", user: createUSers._id });
 }
-export const confirmEmail = async (req, res) => {
+export const confirmEmail = async (req, res,next) => {
     const { token } = req.params;
     const decoded = verifyToken(token, process.env.SIGNUP_TOKEN);
     if (!decoded?.email) {
@@ -54,7 +54,7 @@ export const confirmEmail = async (req, res) => {
     } else
         return next(new Error("your email is verfy"));
 }
-export const NewconfirmEmail = async (req, res) => {
+export const NewconfirmEmail = async (req, res,next) => {
     let { token } = req.params;
     const decoded = verifyToken(token, process.env.SIGNUP_TOKEN);
     if (!decoded.email) {

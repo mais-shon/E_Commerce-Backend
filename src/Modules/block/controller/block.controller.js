@@ -1,5 +1,5 @@
 import { blockModel } from "../../../../DB/model/block.model.js";
-import userModel from "../../../../DB/model/user.model.js";
+import userModel from "../../../../DB/model/User.model.js";
 
 //stakeholder  block customere
 export const createBlock = async (req, res, next) => {

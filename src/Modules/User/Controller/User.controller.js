@@ -1,5 +1,5 @@
 import Category_UserModel from "../../../../DB/model/Category_User.model.js";
-import userModel from "../../../../DB/model/user.model.js";
+import userModel from "../../../../DB/model/User.model.js";
 import { compare, hash } from "../../../Services/hashAndCompare.js";
 import cloudinary from "../../../Services/cloudinary.js";
 import { generateToken } from "../../../Services/generateAndVerifyToken.js";

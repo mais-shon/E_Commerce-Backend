@@ -1,9 +1,9 @@
-import productModel from "../../../../DB/model/Product.model.js";
+import productModel from "../../../../DB/model/product.model.js";
 import Product_Color_SizeModel from "../../../../DB/model/Product_Color_Size.model.js";
 import { blockModel } from "../../../../DB/model/block.model.js";
 import cartModel from "../../../../DB/model/cart.model.js";
 import orderModel from "../../../../DB/model/order.model.js";
-import userModel from "../../../../DB/model/user.model.js";
+import userModel from "../../../../DB/model/User.model.js";
 
 /*export const createOrder=async (req,res,next)=>{
     let{products,phoneNumber,address,note}=req.body;
