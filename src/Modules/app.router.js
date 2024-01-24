@@ -11,10 +11,13 @@ import feedBackRouter from './feedBack/feedBack.router.js';
 import blockRouter from './block/block.router.js';
 import reportRouter from './report/report.router.js';
 import path from 'path';
+import cors from 'cors';
+
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const fullPath = path.join(__dirname, '../upload');
 const initApp = (app, express) => {
+    app.use(cors());
     connectDB();
     app.use(express.json());
     app.use('/upload', express.static(fullPath));

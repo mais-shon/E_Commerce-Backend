@@ -293,9 +293,23 @@ export const showgeneralinfoforproduct = async (req, res, next) => {
 }
 export const getspecficProductForSpecificStore = async (req, res, next) => {
   const { categoryId, stakeHolderId, productId } = req.params;
-  const product = await productModel.findOne({ productId });
+  const product = await productModel.findOne({ _id:productId });
   if (!product) {
     return next(new Error('cant found this product'));
   }
   else return res.status(200).json({ message: "success", product })
 }
+export const getproductforsatkeholder = async (req, res, next) => {
+  const stakeHolderId = req.user._id;
+  const user = await userModel.findOne({_id: stakeHolderId });
+  if (!user) {
+    return next(new Error('this user not found'));
+  }
+  const products=await productModel.find({createdBy:stakeHolderId})
+  if (products.length==0) {
+    return next(new Error('no product yet'));
+  }
+  else return res.status(200).json({ message: "success", products })
+}
+
+

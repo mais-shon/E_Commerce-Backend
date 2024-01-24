@@ -50,7 +50,7 @@ export const confirmEmail = async (req, res) => {
     }
     let user = await userModel.updateOne({ email: decoded.email }, { confirmEmail: true });
     if (user.modifiedCount) {
-        return res.status(200).redirect(`${process.env.FU_URL}`);
+        return res.status(200);
     } else
         return next(new Error("your email is verfy"));
 }

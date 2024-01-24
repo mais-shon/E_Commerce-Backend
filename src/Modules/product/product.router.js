@@ -23,6 +23,8 @@ router.put('/updateProduct/:productId', auth([roles.stakeHolder, roles.Admin]), 
     { name: 'subImages', maxCount: 4 }
 ]), validation(validators.updateProductSchema), asyncHandler(productController.updateProduct));
 
+router.get('/getproductforsatkeholder',auth([roles.stakeHolder]),asyncHandler(productController.getproductforsatkeholder));
+
 router.put('/color_size_qutupdate/:productId', auth([roles.stakeHolder]), validation(validators.color_size_qutupdateSchema), asyncHandler(productController.color_size_qutupdate));
 router.get('/:stockholderId', auth([roles.stakeHolder, roles.Customer, roles.Admin]), validation(validators.getProductsForSpecificStoreSchema), asyncHandler(productController.getProductsForSpecificStore));
 router.patch('/addToWishlist/:productId', auth([roles.Customer]), validation(validators.removeFromWishlistSchema), asyncHandler(productController.addToWishList));
@@ -30,6 +32,7 @@ router.patch('/removeFromWishlist/:productId', auth([roles.Customer]), validatio
 router.get('/', auth([roles.Customer]), asyncHandler(productController.getWishList));
 router.patch('/like/:productId', auth([roles.Customer]), validation(validators.likeProductSchema), asyncHandler(productController.likeProduct));
 router.patch('/unlike/:productId', auth([roles.Customer]), validation(validators.unlikeProductSchema), asyncHandler(productController.unlikeProduct));
+
 router.get('/showcolor_size_qutupdate/:productId', auth([roles.stakeHolder]), asyncHandler(productController.showcolor_size_qutupdate));
 router.get('/showgeneralinfoforproduct/:productId', auth([roles.stakeHolder]), asyncHandler(productController.showgeneralinfoforproduct));
 router.get(
@@ -38,7 +41,7 @@ router.get(
     asyncHandler(productController.getspecficProductForSpecificStore)
 );
 router.get(
-    '/getspecficProductForSpecificStore/:categoryId/:stakeHolderId/:productId',
+    '/getspecficProductForSpecificStore/:productId',
     auth([roles.Customer, roles.stakeHolder, roles.Admin]),
     asyncHandler(productController.getspecficProductForSpecificStore)
 );
