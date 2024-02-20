@@ -6,7 +6,7 @@ import Product_Color_SizeModel from "../../../../DB/model/Product_Color_Size.mod
 import { blockModel } from "../../../../DB/model/block.model.js";
 //create product
 export const createProduct = async (req, res, next) => {
-  let { name, price, discount, description, products } = req.body;
+  let { name, price, discount, descreption, products } = req.body;
   const check = await userModel.findOne({ _id: req.user._id, role: 'stakeHolder' });
   if (!check) {
     return next(new Error(`sorry, you cant post any product`, { cause: 400 }));
@@ -27,7 +27,7 @@ export const createProduct = async (req, res, next) => {
   const subImages = req.body.subImages;
   req.body.createdBy = req.user._id;
   const createdBy = req.body.createdBy;
-  const newProduct = await productModel.create({ name, slug, price, discount, finalPrice, description, subImages, mainImage, createdBy });
+  const newProduct = await productModel.create({ name, slug, price, discount, finalPrice, descreption, subImages, mainImage, createdBy });
   const productListInfo = products.map(product => ({
     size: product.size || "One Size",
     color: product.color || "One Color",
@@ -266,12 +266,15 @@ export const unlikeProduct = async (req, res, next) => {
 }
 //showcolor_size_qutupdate
 export const showcolor_size_qutupdate = async (req, res, next) => {
+
   const { productId } = req.params;
+
   const product = await productModel.findOne({
     _id: productId,
     deletedAt: false,
-    createdBy: req.user._id,
+  
   });
+  
   if (!product) {
     return next(new Error('This product was not found', { cause: 400 }));
   }

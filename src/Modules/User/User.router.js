@@ -15,4 +15,6 @@ router.patch('/softDeleteUser/:userId', auth([roles.Admin]), validation(validato
 router.get('/getSoftDeleteUser', auth([roles.Admin]),asyncHandler(userController.getSofDeletetuser));
 router.put('/', auth([roles.Admin, roles.Customer, roles.stakeHolder]), validation(validators.updateInfoSchema),asyncHandler(userController.updateInfo));
 router.get('/getAllUsers', auth([roles.Admin]), asyncHandler(userController.getAllUsers));
+router.get('/getUserProfile', auth([roles.stakeHolder,roles.Admin,roles.Customer]), asyncHandler(userController.getUserProfile));
+router.get('/getAllstakeHolder', auth([roles.stakeHolder,roles.Admin,roles.Customer]), asyncHandler(userController.getAllstakeHolder));
 export default router;

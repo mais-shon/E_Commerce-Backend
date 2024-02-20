@@ -127,6 +127,31 @@ export const updateInfo = async (req, res, next) => {
   return res.json({ message: "success" });
 }
 export const getAllUsers=async(req,res,next)=>{
+  const userId = req.user._id;
   let users=await userModel.find();
+  if(!users.length){
+    return next(new Error(`Sorry this user not found`))
+  }else
   return res.status(200).json({message:"success",users})
+
+  
   }
+
+  export const getUserProfile=async(req,res,next)=>{
+    const userId = req.user._id;
+    const user=await userModel.findOne({_id:userId});
+    if(!user){
+      return next(new Error(`Sorry this user not found`))
+    }else
+    return res.status(200).json({message:'success',user})
+
+  }
+
+  export const getAllstakeHolder=async(req,res,next)=>{
+    const userId = req.user._id;
+    let users=await userModel.find({role:'stakeHolder'});
+    if(!users.length){
+      return next(new Error(`Sorry this user not found`))
+    }else
+    return res.status(200).json({message:"success",users})
+    }

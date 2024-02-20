@@ -145,7 +145,7 @@ export const getOrderForSpecificStock = async (req, res, next) => {
     for (let order of orders) {
         for (let i = 0; i < order.products.length; i++) {
             if (order.products[i].stockholder.equals(req.user._id)) {
-                stockOrders.push({ product: order.products[i], userId: order.userId, phoneNumber: order.phoneNumber, address: order.address, note: order.note,status:order.status });
+                stockOrders.push({orderId:order._id, product: order.products[i], userId: order.userId, phoneNumber: order.phoneNumber, address: order.address, note: order.note,status:order.status });
             }
         }
     }
